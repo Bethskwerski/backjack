@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Let's Play Blackjack</title>
+</head>
+<body>
+	<h1>Let's Play Blackjack!</h1>
+	<h4>Place your bet if you are ready to begin play</h4>
+	<br>
+	<!-- I discovered that I could set a min and max on the input as well as pass the current value of the bankroll as the max. I decided our table has a min bet of a penny -->
+	<form method="post" action="/play">
+		<input type="number" name="bet" step="0.01" min = 0.01 max = {{bankroll}} required autofocus>
+		<button>Place Bet</button>
+	</form>
+	<h3>Player's current bankroll is: {{bankroll}}</h3>
+</body>
+</html>

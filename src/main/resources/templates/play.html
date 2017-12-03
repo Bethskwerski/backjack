@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Blackjack Game</title>
+</head>
+<body>
+<h1>Twenty-One</h1>
+<div class="dealerHand">
+
+			<h2>Dealer</h2>
+			
+			{{^handOver}}
+				{{ dealerCard.0.face }} of {{ dealerCard.0.suit }}
+			{{/handOver}}
+			
+			{{#showCard}}
+			<ul>
+				{{#dealerCard}}
+				<li>{{ face }} of {{ suit }}</li> 
+				{{/dealerCard}}
+			</ul>
+			<h3>Dealer's hand is worth {{ dealerHandPoints }}</h3>
+			{{/showCard}}
+		</div>
+		<div class="playerHand">
+
+			<h2>Player</h2>
+			<ul>
+				{{#playerCard}}
+				<li>{{ face }} of {{ suit }}</li> 
+				{{/playerCard}}
+			</ul>
+		</div>
+		<h3>Player's hand is worth {{ playerHandPoints }}</h3>
+		{{#canHit}}
+			<div> 
+ 			<form method="post" action="/hitme"> 
+ 				<button>Hit</button> 
+ 			</form> 
+		</div> 
+		{{/canHit}}
+		{{#canDouble}}
+		<div> 
+ 			<form method="post" action="/doubleDown"> 
+ 				<button>Double Down</button> 
+ 			</form> 
+		</div> 
+		{{/canDouble}}
+		{{^handOver}}
+		<div> 
+ 			<form method="post" action="/stand"> 
+ 				<button>Stand</button> 
+ 			</form> 
+		</div> 
+		{{/handOver}}
+		
+		{{#playerBust}}
+		<h3>Player is bust!</h3>
+		{{/playerBust}}
+		
+		{{#playerWins}}
+		<h3>Player Wins!!</h3>
+		{{/playerWins}}
+		
+		{{#dealerWins}}
+		<h3>Dealer Wins...</h3>
+		{{/dealerWins}}
+		
+		{{#playerBlackJack}}
+		<h3>Player has Blackjack!</h3>
+		{{/playerBlackJack}}
+		
+		{{#dealerBlackJack}}
+		<h3>Dealer has Blackjack...</h3>
+		{{/dealerBlackJack}}
+		
+		{{#handOver}}
+		<div> 
+ 			<form method="post" action="/newHand"> 
+ 				<button>Next Hand</button> 
+ 			</form> 
+		</div> 
+		{{/handOver}}
+		
+		{{#push}}
+		<h3>Push!!- Play another hand</h3>
+		{{/push}}
+		
+		
+</body>
+</html>
